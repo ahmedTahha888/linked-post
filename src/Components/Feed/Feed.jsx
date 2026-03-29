@@ -75,13 +75,6 @@ if(isLoading){
                   <span>Feed</span>
                 </NavLink>
 
-                <NavLink to="/saidPost" className={styleNav}>
-                  <span>
-                    <LuSparkles />
-                  </span>
-                  <span>My Posts</span>
-                </NavLink>
-
                 <NavLink to="/community" className={styleNav}>
                   <span>
                     <IoEarthOutline />
@@ -107,12 +100,7 @@ if(isLoading){
                     </span>
                     <span>Feed</span>
                   </NavLink>
-                  <NavLink to="/saidPost" className={navStyle}>
-                    <span>
-                      <LuSparkles />
-                    </span>
-                    <span>My Posts</span>
-                  </NavLink>
+                
                   <NavLink to="/community" className={navStyle}>
                     <span>
                       <IoEarthOutline />

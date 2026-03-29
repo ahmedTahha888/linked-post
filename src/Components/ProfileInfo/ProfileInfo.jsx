@@ -148,68 +148,13 @@ export default function ProfileInfo({data}) {
                       </p>
                     </div>
                   </div>
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                    <div className="rounded-2xl border border-[#dbeafe] bg-[#f6faff] px-4 py-3">
-                      <p className="text-xs font-bold uppercase tracking-wide text-[#1f4f96]">
-                        My posts
-                      </p>
-                      <p className="mt-1 text-2xl font-black text-slate-900">
-                        0
-                      </p>
-                    </div>
-                    <div className="rounded-2xl border border-[#dbeafe] bg-[#f6faff] px-4 py-3">
-                      <p className="text-xs font-bold uppercase tracking-wide text-[#1f4f96]">
-                        Saved posts
-                      </p>
-                      <p className="mt-1 text-2xl font-black text-slate-900">
-                        0
-                      </p>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
           </section>
 
-          <section className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-              <div className="grid w-full grid-cols-2 gap-2 rounded-xl bg-slate-100 p-1.5 sm:inline-flex sm:w-auto sm:gap-0">
-                <NavLink
-                  to="/profile/myPostProfile"
-                  className={({ isActive }) =>
-                    `inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition
-                      ${
-                        isActive
-                          ? "bg-white text-[#1877f2] shadow-sm"
-                          : "text-slate-600 hover:text-slate-900"
-                      }`
-                  }
-                >
-                  <IoDocumentTextOutline />
-                  <span>My Posts</span>
-                </NavLink>
-
-                <NavLink
-                  to="/profile/savePosts"
-                  className={({ isActive }) =>
-                    `inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition
-                      ${
-                        isActive
-                          ? "bg-white text-[#1877f2] shadow-sm"
-                          : "text-slate-600 hover:text-slate-900"
-                      }`
-                  }
-                >
-                  <CiBookmark />
-                  <span>Saved</span>
-                </NavLink>
-              </div>
-              <span className="rounded-full bg-[#e7f3ff] px-3 py-1 text-xs font-bold text-[#1877f2]">0</span>
-            </div>
-            <div className="space-y-3">
-                    <Outlet/>
-            </div>
-          </section>
+         
         </div>
       </main>
     </div>

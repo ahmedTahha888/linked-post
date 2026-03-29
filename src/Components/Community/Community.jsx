@@ -1,11 +1,9 @@
 import axios from "axios";
-import { CiBookmark, CiFaceSmile, CiSearch } from "react-icons/ci";
-import { FiSend, FiUserPlus } from "react-icons/fi";
-import { GoImage } from "react-icons/go";
+import { CiBookmark } from "react-icons/ci";
 import { IoEarthOutline, IoNewspaperOutline } from "react-icons/io5";
 import { LuSparkles } from "react-icons/lu";
 import { TbUsers } from "react-icons/tb";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Post from "../Post/Post";
 import { useQuery } from "@tanstack/react-query";
 import Followers from "../Followers/Followers";
@@ -40,9 +38,6 @@ const Community = () => {
     queryFn: getAllPosts,
   });
   console.log(data, "data");
-  // console.log(isLoading , "isLoading");
-  // console.log(isFetching , "isFetching");
-  // console.log(isError , "isError");
 
   return (
     <div className="bg-[#F0F2F5]">
@@ -56,13 +51,6 @@ const Community = () => {
                     <IoNewspaperOutline />
                   </span>
                   <span>Feed</span>
-                </NavLink>
-
-                <NavLink to="/saidPost" className={styleNav}>
-                  <span>
-                    <LuSparkles />
-                  </span>
-                  <span>My Posts</span>
                 </NavLink>
 
                 <NavLink to="/community" className={styleNav}>
@@ -89,12 +77,7 @@ const Community = () => {
                     </span>
                     <span>Feed</span>
                   </NavLink>
-                  <NavLink to="/saidPost" className={navStyle}>
-                    <span>
-                      <LuSparkles />
-                    </span>
-                    <span>My Posts</span>
-                  </NavLink>
+
                   <NavLink to="/community" className={navStyle}>
                     <span>
                       <IoEarthOutline />

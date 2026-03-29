@@ -1,7 +1,6 @@
 import { CiBookmark } from "react-icons/ci";
 
 import { IoEarthOutline, IoNewspaperOutline } from "react-icons/io5";
-import { LuSparkles } from "react-icons/lu";
 import { TbUsers } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import Followers from "../Followers/Followers";
@@ -35,13 +34,6 @@ const Saved = () => {
                   <span>Feed</span>
                 </NavLink>
 
-                <NavLink to="/saidPost" className={styleNav}>
-                  <span>
-                    <LuSparkles />
-                  </span>
-                  <span>My Posts</span>
-                </NavLink>
-
                 <NavLink to="/community" className={styleNav}>
                   <span>
                     <IoEarthOutline />
@@ -66,12 +58,7 @@ const Saved = () => {
                     </span>
                     <span>Feed</span>
                   </NavLink>
-                  <NavLink to="/saidPost" className={navStyle}>
-                    <span>
-                      <LuSparkles />
-                    </span>
-                    <span>My Posts</span>
-                  </NavLink>
+
                   <NavLink to="/community" className={navStyle}>
                     <span>
                       <IoEarthOutline />

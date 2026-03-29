@@ -10,7 +10,6 @@ import Community from "./Components/Community/Community";
 import Feed from "./Components/Feed/Feed";
 import Profile from "./Components/Profile/Profile";
 import Notifications from "./Components/Notifications/Notifications";
-import SavePosts from "./Components/SavePosts/SavePosts";
 import AuthContextProvider from "./Context/AuthContext";
 import Settings from "./Components/Settings/Settings";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
@@ -18,8 +17,6 @@ import AddComment from "./Components/AddComment/AddComment";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PostsDetails from "./Components/PostsDetails/PostsDetails";
 import NotFound from "./Components/NotFound/NotFound";
-import MyPostProfile from "./Components/MyPostProfile/MyPostProfile";
-import SaidPost from "./Components/SaidPost/SaidPost";
 
 function App() {
   const router = createBrowserRouter([
@@ -41,20 +38,12 @@ function App() {
         </ProtectedRoute>
       ),
       children: [
-        {
-          path: "/profile",
-          element: <ProtectedRoute><Profile /></ProtectedRoute> ,
-          children: [
-            { path: "myPostProfile", element: <MyPostProfile /> },
-            { path: "savePosts", element: <SavePosts /> },
-          ],
-        },
+        { path: "/profile",element: <ProtectedRoute><Profile /></ProtectedRoute>},
         { path: "/notifications", element: <ProtectedRoute><Notifications /></ProtectedRoute> },
         { path: "/feed", element: <ProtectedRoute><Feed /></ProtectedRoute> },
         { path: "/saved", element: <ProtectedRoute><Saved /> </ProtectedRoute>},
         { path: "/community", element: <ProtectedRoute><Community /></ProtectedRoute> },
         { path: "/setting", element: <ProtectedRoute><Settings /></ProtectedRoute> },
-        { path: "/saidPost", element: <ProtectedRoute><SaidPost /></ProtectedRoute> },
         { path: "/addComment", element: <AddComment /> },
         { path: "/postsDetails/:id", element: <ProtectedRoute><PostsDetails /></ProtectedRoute> },
         { path: "*", element: <NotFound /> },
