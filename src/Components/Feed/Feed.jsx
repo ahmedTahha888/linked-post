@@ -6,15 +6,13 @@ import { TbUsers } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import Post from "../Post/Post";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Followers from "../Followers/Followers";
 import Loading from "../Loading/Loading";
 import CreatePost from "../CreatePost/CreatePost";
+import { useQuery } from "@tanstack/react-query";
 import Loader from "../Loading/Loader";
 
 const Feed = () => {
-  const [feedPosts, setFeedPosts] = useState(null);
-  const [loader, setLoader] = useState(true);
 
   const navStyle = ({ isActive }) =>
     `flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition ${
@@ -30,9 +28,21 @@ const Feed = () => {
         : "text-slate-700 hover:bg-slate-100"
     }`;
 
-  async function homeFeed() {
-    try {
-      const { data } = await axios.get(
+
+
+    
+
+ const {data , isFetching , isLoading} =  useQuery({
+  queryKey: ["homeFeed"],
+  queryFn: homeFeed,
+  refetchOnWindowFocus: false,
+  keepPreviousData: true,
+
+    })
+
+ function homeFeed() {
+ 
+      return axios.get(
         "https://route-posts.routemisr.com/posts/feed?only=following&limit=10",
         {
           headers: {
@@ -40,20 +50,16 @@ const Feed = () => {
           },
         },
       );
-      console.log(data.data.posts);
-      setFeedPosts(data.data.posts);
-    } catch (error) {
-      console.log(error.response.data);
-    } finally {
-      setLoader(false);
-    }
+     
   }
 
-  useEffect(function () {
-    homeFeed();
-  }, []);
+const posts = data?.data?.data?.posts || [];
 
-  if (loader) return <Loader />;
+
+
+if(isLoading){
+  return <Loader />
+}
 
   return (
     <div className="bg-[#F0F2F5]">
@@ -149,15 +155,15 @@ const Feed = () => {
 
               {/* post */}
 
-              {!feedPosts ? (
+              {isFetching ? (
                 <>
                   <Loading />
                   <Loading />
                   <Loading />
                 </>
-              ) : feedPosts.length > 0 ? (
+              ) : posts.length > 0 ? (
                 <div className="space-y-4">
-                  {feedPosts.map((post, idx) => (
+                  {posts.map((post, idx) => (
                     <Post key={idx} post={post} id={post._id} />
                   ))}
                 </div>

@@ -6,6 +6,7 @@ import { PiHouseLine } from "react-icons/pi";
 import { RiUser3Line } from "react-icons/ri";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { authContext } from "../../Context/AuthContext";
+import image from "./../../assets/WhatsApp Image 2026-03-27 at 7.41.22 PM.jpeg";
 const MainNavbar = () => {
  const navigate = useNavigate()
  const { logoutContext }= useContext(authContext)
@@ -24,7 +25,7 @@ const MainNavbar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-2 py-1.5 sm:gap-3 sm:px-3 ">
         <div className="flex items-center gap-3">
           <img
-            src="https://route-posts.routemisr.com/route.png"
+            src={image}
             className="h-9 w-9 rounded-xl object-cover"
             alt="Route Posts"
           />
