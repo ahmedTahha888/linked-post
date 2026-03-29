@@ -71,7 +71,7 @@ const UpdateModal = ({ post, closeModal }) => {
         </div>
 
         <Button
-          onClick={mutate}
+          onClick ={mutate}
           className="bg-blue-500"
         >
           {isPending ? "Updating..." : "Update"}

@@ -16,7 +16,6 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import AddComment from "../AddComment/AddComment";
-import NoComments from "../NoComments/NoComments";
 import UpdateModal from "../UpdateModal/Updatemodal";
 
 const Post = ({ post, id, isPostDetails }) => {
@@ -204,15 +203,6 @@ const Post = ({ post, id, isPostDetails }) => {
                       </span>
                       <span>Edit post</span>
                     </button>
-
-                    {/* <button
-                      className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-50"
-                    >
-                      <span >
-                        <GoPencil />
-                      </span>
-                      <span>Edit post</span>
-                    </button> */}
 
                     <button
                       onClick={mutate}
