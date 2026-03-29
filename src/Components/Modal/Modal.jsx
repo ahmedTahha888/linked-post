@@ -10,7 +10,7 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
-const UpdateModal = ({ post, closeModal }) => {
+const Modal = ({ post, closeModal }) => {
   const [text, setText] = useState(post?.body || "");
   const queryClient = useQueryClient();
 
@@ -81,4 +81,4 @@ const UpdateModal = ({ post, closeModal }) => {
   );
 };
 
-export default UpdateModal;
+export default Modal;

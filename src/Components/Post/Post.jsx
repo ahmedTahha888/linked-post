@@ -16,7 +16,7 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import AddComment from "../AddComment/AddComment";
-import UpdateModal from "../UpdateModal/Updatemodal";
+import Modal from "../Modal/Modal";
 
 const Post = ({ post, id, isPostDetails }) => {
   const { user } = useContext(authContext);
@@ -260,7 +260,7 @@ const Post = ({ post, id, isPostDetails }) => {
 
       {openUpdate && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <UpdateModal post={post} closeModal={() => setOpenUpdate(false)} />
+          <Modal post={post} closeModal={() => setOpenUpdate(false)} />
         </div>
       )}
 
