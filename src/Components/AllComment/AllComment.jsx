@@ -4,6 +4,7 @@ import { FaEllipsisH, FaPen, FaTrashAlt } from "react-icons/fa";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { authContext } from "../../Context/AuthContext";
+import toast from "react-hot-toast";
 
 const AllComment = ({ postComments, postId }) => {
   const { user } = useContext(authContext);
@@ -36,6 +37,32 @@ const AllComment = ({ postComments, postId }) => {
     },
   });
 
+  // =======Delete Comment Mutation=======
+  const { mutate: deleteComment, isPending: deletePending } = useMutation({
+  mutationFn: ({ postId, commentId }) => {
+    return axios.delete(
+      `https://route-posts.routemisr.com/posts/${postId}/comments/${commentId}`,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+  },
+  onSuccess: () => {
+    toast.success("Comment deleted successfully");
+    queryClient.invalidateQueries(["postComments"]);
+  },
+  onError: (err) => {
+    console.log(err);
+    toast.error("Failed to delete comment");
+  },
+});
+
+const handleDelete = (commentId) => {
+  deleteComment({ postId, commentId });
+};
+
   const toggleOptions = (id) => {
     setActiveCommentId((prev) => (prev === id ? null : id));
   };
@@ -45,6 +72,8 @@ const AllComment = ({ postComments, postId }) => {
     setEditText(comment.content);
     setActiveCommentId(null);
   };
+
+
 
   const handleSave = (commentId) => {
     updateComment({
@@ -148,9 +177,9 @@ const AllComment = ({ postComments, postId }) => {
                       <span>Edit</span>
                     </button>
 
-                    <button className="text-red-600 flex gap-2 items-center cursor-pointer hover:bg-red-100 py-2 px-3 rounded">
+                    <button onClick={() => handleDelete(comment._id)} className="text-red-600 flex gap-2 items-center cursor-pointer hover:bg-red-100 py-2 px-3 rounded">
                       <FaTrashAlt />
-                      Delete
+                      {deletePending ? "Deleting..." : "Delete"}
                     </button>
                   </div>
                 </div>
