@@ -8,7 +8,7 @@ import { Spinner } from "@heroui/react";
 import { useForm } from "react-hook-form";
 import AllComment from "../AllComment/AllComment";
 import NoComments from "../NoComments/NoComments";
-
+import Loading from './../Loading/Loading';
 const AddComment = ({ comment, postId , post}) => {
 const {register , reset , handleSubmit} =  useForm({
     defaultValues:{
@@ -102,8 +102,12 @@ const {register , reset , handleSubmit} =  useForm({
           <option value="newest">Newest</option>
         </select>
       </div>
+
+       {isPending ? <Loading/> :
+       
+      postComments?.length > 0 ? <AllComment postId={postId} post={post} postComments={postComments} />  : <NoComments/>
+      }
      
-      {postComments?.length > 0 ? <AllComment postId={postId} postComments={postComments} /> : <NoComments/>}
       
 
       <div className="mt-3">

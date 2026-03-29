@@ -95,6 +95,8 @@ const Post = ({ post, id, isPostDetails }) => {
     return `${diffInDays}d`;
   }
 
+  const isLikedByMe = post?.likes?.some((like) => like?._id === user?._id);
+
   return (
     <article className="overflow-visible rounded-xl border border-slate-200 bg-white shadow-sm">
       {/* post header */}
@@ -311,7 +313,18 @@ const Post = ({ post, id, isPostDetails }) => {
       <div className="grid grid-cols-3 gap-1 p-1">
         <button
           onClick={likePostMutation}
-          className={` flex items-center justify-center ${post?.likesCount ? "text-[#1877f2] bg-[#DBEAFE] hover:bg-[#DBEAFE] " : "text-slate-600"} ${likePostPending ? "opacity-50  cursor-not-allowed " : "hover:bg-slate-100 cursor-pointer"} gap-1.5 rounded-md p-2 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50 sm:gap-2 sm:text-sm`}
+          className={`flex items-center justify-center 
+${
+  isLikedByMe
+    ? "text-[#1877f2] bg-[#DBEAFE] hover:bg-[#DBEAFE]"
+    : "text-slate-600"
+} 
+${
+  likePostPending
+    ? "opacity-50 cursor-not-allowed"
+    : "hover:bg-slate-100 cursor-pointer"
+} 
+gap-1.5 rounded-md p-2 text-xs font-semibold transition-colors sm:gap-2 sm:text-sm`}
         >
           <span className="text-xl">
             <VscThumbsup />

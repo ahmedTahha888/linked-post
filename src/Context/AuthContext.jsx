@@ -5,20 +5,20 @@ export const authContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null); // 👈 الجديد
+  const [user, setUser] = useState(null); 
 
   function insertUserToken(tkn) {
     setToken(tkn);
 
-    const decoded = jwtDecode(tkn); // 👈 فك التوكن
-    setUser(decoded); // 👈 خزّن بيانات اليوزر
+    const decoded = jwtDecode(tkn); 
+    setUser(decoded);    
 
     localStorage.setItem("token", tkn);
   }
 
   function logoutContext() {
     setToken(null);
-    setUser(null); // 👈 مهم
+    setUser(null); 
     localStorage.removeItem("token");
   }
 
