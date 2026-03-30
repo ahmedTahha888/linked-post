@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import AllComment from "../AllComment/AllComment";
 import NoComments from "../NoComments/NoComments";
 import Loading from './../Loading/Loading';
+import CommentLoading from "../Loading/CommentLoading";
 
 const AddComment = ({ comment, postId , post}) => {
 const {register , reset , handleSubmit} =  useForm({
@@ -74,7 +75,7 @@ const {register , reset , handleSubmit} =  useForm({
     })
   }
         
-    const {data:comments } = useQuery({
+    const {data:comments , isLoading } = useQuery({
         queryKey:["comments" , postId],
         queryFn: getPostComments,
     })
@@ -82,7 +83,9 @@ const {register , reset , handleSubmit} =  useForm({
 
     const postComments = comments?.data?.data?.comments || []
     
-
+    if(isLoading){
+      return <CommentLoading/>
+    }
 
   return (
     <div className="border-t border-slate-200 bg-[#f7f8fa] px-4 py-4">
@@ -106,7 +109,7 @@ const {register , reset , handleSubmit} =  useForm({
 
        
      
-      {postComments?.length > 0 ? <AllComment postId={postId} post={post} postComments={postComments} />  : <NoComments/>}
+    {postComments?.length > 0 ? <AllComment postId={postId} post={post} postComments={postComments} />  : <NoComments/>}
       
 
       <div className="mt-3">
