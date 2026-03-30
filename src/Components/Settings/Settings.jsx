@@ -6,6 +6,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import { IoKeySharp } from "react-icons/io5";
+import { Helmet } from "react-helmet";
 
 const Settings = () => {
   const schema = z
@@ -91,7 +92,11 @@ const Settings = () => {
 
   return (
     <>
-      
+         <Helmet>
+        <title>Setting Page </title>
+      </Helmet>
+
+
       <div className="mx-auto max-w-7xl px-3 py-3.5 my-20">
         <main className="min-w-0">
           <div className="mx-auto max-w-2xl">

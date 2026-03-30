@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import Followers from "../Followers/Followers";
 import Loading from "../Loading/Loading";
 import CreatePost from "../CreatePost/CreatePost";
+import { Helmet } from "react-helmet";
 
 const Community = () => {
   const styleNav = ({ isActive }) =>
@@ -40,113 +41,119 @@ const Community = () => {
   console.log(data, "data");
 
   return (
-    <div className="bg-[#F0F2F5]">
-      <div className="mx-auto max-w-7xl px-3 py-3.5 bg-[#F0F2F5]">
-        <main className="min-w-0">
-          <div className="grid gap-4 xl:grid-cols-[240px_minmax(0,1fr)_300px]">
-            <aside className="hidden h-fit space-y-3 xl:sticky xl:top-[84px] xl:block">
-              <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-                <NavLink to="/feed" className={styleNav}>
-                  <span>
-                    <IoNewspaperOutline />
-                  </span>
-                  <span>Feed</span>
-                </NavLink>
+    <>
+      <Helmet>
+        <title>Community Page </title>
+      </Helmet>
 
-                <NavLink to="/community" className={styleNav}>
-                  <span>
-                    <IoEarthOutline />
-                  </span>
-                  <span>Community</span>
-                </NavLink>
-
-                <NavLink to="/saved" className={styleNav}>
-                  <span>
-                    <CiBookmark />
-                  </span>
-                  <span>Saved</span>
-                </NavLink>
-              </div>
-            </aside>
-            <section className="space-y-4">
-              <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-sm xl:hidden">
-                <div className="grid grid-cols-2 gap-2">
-                  <NavLink to="/feed" className={navStyle}>
+      <div className="bg-[#F0F2F5]">
+        <div className="mx-auto max-w-7xl px-3 py-3.5 bg-[#F0F2F5]">
+          <main className="min-w-0">
+            <div className="grid gap-4 xl:grid-cols-[240px_minmax(0,1fr)_300px]">
+              <aside className="hidden h-fit space-y-3 xl:sticky xl:top-[84px] xl:block">
+                <div className="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+                  <NavLink to="/feed" className={styleNav}>
                     <span>
                       <IoNewspaperOutline />
                     </span>
                     <span>Feed</span>
                   </NavLink>
 
-                  <NavLink to="/community" className={navStyle}>
+                  <NavLink to="/community" className={styleNav}>
                     <span>
                       <IoEarthOutline />
                     </span>
                     <span>Community</span>
                   </NavLink>
-                  <NavLink to="/saved" className={navStyle}>
+
+                  <NavLink to="/saved" className={styleNav}>
                     <span>
                       <CiBookmark />
                     </span>
                     <span>Saved</span>
                   </NavLink>
                 </div>
-              </div>
-              <div className="space-y-3 xl:hidden">
-                <button
-                  type="button"
-                  className="inline-flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm"
-                >
-                  <span className="inline-flex items-center gap-2 text-sm font-extrabold text-slate-900">
-                    <TbUsers className="lucide lucide-users text-[#1877f2]" />{" "}
-                    <span>Suggested Friends</span>
-                  </span>
-                  <span className="inline-flex items-center gap-2">
-                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-600">
-                      10
+              </aside>
+              <section className="space-y-4">
+                <div className="rounded-2xl border border-slate-200 bg-white p-2 shadow-sm xl:hidden">
+                  <div className="grid grid-cols-2 gap-2">
+                    <NavLink to="/feed" className={navStyle}>
+                      <span>
+                        <IoNewspaperOutline />
+                      </span>
+                      <span>Feed</span>
+                    </NavLink>
+
+                    <NavLink to="/community" className={navStyle}>
+                      <span>
+                        <IoEarthOutline />
+                      </span>
+                      <span>Community</span>
+                    </NavLink>
+                    <NavLink to="/saved" className={navStyle}>
+                      <span>
+                        <CiBookmark />
+                      </span>
+                      <span>Saved</span>
+                    </NavLink>
+                  </div>
+                </div>
+                <div className="space-y-3 xl:hidden">
+                  <button
+                    type="button"
+                    className="inline-flex w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm"
+                  >
+                    <span className="inline-flex items-center gap-2 text-sm font-extrabold text-slate-900">
+                      <TbUsers className="lucide lucide-users text-[#1877f2]" />{" "}
+                      <span>Suggested Friends</span>
                     </span>
-                    <span className="text-xs font-bold text-[#1877f2]">
-                      Show
+                    <span className="inline-flex items-center gap-2">
+                      <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-bold text-slate-600">
+                        10
+                      </span>
+                      <span className="text-xs font-bold text-[#1877f2]">
+                        Show
+                      </span>
                     </span>
-                  </span>
-                </button>
-              </div>
+                  </button>
+                </div>
 
-              {/* Create Post */}
-              <CreatePost />
+                {/* Create Post */}
+                <CreatePost />
 
-              <div className="space-y-4">
-                {isLoading ? (
-                  <>
-                    <Loading />
-                    <Loading />
-                    <Loading />
-                  </>
-                ) : (
-                  data?.data.data.posts.map(function (post, idx) {
-                    return (
-                      <Post
-                        key={idx}
-                        post={post}
-                        id={post._id}
-                        isPostDetails={false}
-                        commentLimit={1}
-                      />
-                    );
-                  })
-                )}
-              </div>
-            </section>
+                <div className="space-y-4">
+                  {isLoading ? (
+                    <>
+                      <Loading />
+                      <Loading />
+                      <Loading />
+                    </>
+                  ) : (
+                    data?.data.data.posts.map(function (post, idx) {
+                      return (
+                        <Post
+                          key={idx}
+                          post={post}
+                          id={post._id}
+                          isPostDetails={false}
+                          commentLimit={1}
+                        />
+                      );
+                    })
+                  )}
+                </div>
+              </section>
 
-            <aside className="hidden h-fit xl:sticky xl:top-[84px] xl:block">
-              {/* {data?.data.data.suggestions.map(function( user ,idx){return <Followers key={idx} user={user}/> })} */}
+              <aside className="hidden h-fit xl:sticky xl:top-[84px] xl:block">
+                {/* {data?.data.data.suggestions.map(function( user ,idx){return <Followers key={idx} user={user}/> })} */}
 
-              <Followers />
-            </aside>
-          </div>
-        </main>
+                <Followers />
+              </aside>
+            </div>
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import Post from "../Post/Post";
 import { useContext } from "react";
 import { authContext } from "../../Context/AuthContext";
 import Loading from "../Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { token } = useContext(authContext);
@@ -45,6 +46,10 @@ const Profile = () => {
   console.log("userPost", userPost);
   return (
     <>
+
+     <Helmet>
+        <title>Profile Page </title>
+      </Helmet>
       <ProfileInfo data={data} />;
       {userPost?.map((post) => {
         return (

@@ -102,6 +102,12 @@ const Register = () => {
   }
 
   return (
+
+    <>
+    <Helmet>
+        <title>Register Page </title>
+      </Helmet>
+    
     <div className="min-h-screen bg-[#F0F2F5] px-4 py-8 sm:py-12 lg:flex lg:items-center">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
         <section className="order-2 w-full max-w-xl text-center lg:order-1 lg:text-left">
@@ -319,6 +325,7 @@ const Register = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

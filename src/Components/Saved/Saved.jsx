@@ -5,6 +5,7 @@ import { TbUsers } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 import Followers from "../Followers/Followers";
 import CreatePost from "../CreatePost/CreatePost";
+import { Helmet } from "react-helmet";
 
 const Saved = () => {
   const styleNav = ({ isActive }) =>
@@ -21,6 +22,11 @@ const Saved = () => {
         : "bg-slate-50 text-slate-700 hover:bg-slate-100"
     }`;
   return (
+    <>
+      <Helmet>
+        <title>Saved Page </title>
+      </Helmet>
+
     <div className="bg-[#F0F2F5]">
       <div className="mx-auto max-w-7xl px-3 py-3.5">
         <main className="min-w-0">
@@ -112,6 +118,7 @@ const Saved = () => {
         </main>
       </div>
     </div>
+    </>
   );
 };
 

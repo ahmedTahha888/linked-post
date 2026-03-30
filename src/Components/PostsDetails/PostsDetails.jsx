@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Post from "../Post/Post";
 import { Spinner } from "@heroui/react";
 import Loading from "../Loading/Loading";
+import { Helmet } from "react-helmet";
 
 const PostsDetails = () => {
   const navigate = useNavigate();
@@ -40,6 +41,13 @@ const PostsDetails = () => {
   }
 
   return (
+
+    <>
+
+     <Helmet>
+        <title>Post Details Page </title>
+      </Helmet>
+    
     <div className="bg-[#F0F2F5] ">
       <div className="w-[80%] mx-auto my-10">
         <button
@@ -60,6 +68,7 @@ const PostsDetails = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import z from "zod";
 import { authContext } from "../../Context/AuthContext";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
 
@@ -77,6 +78,10 @@ const {insertUserToken} =  useContext(authContext);
   }
 
   return (
+    <>
+     <Helmet>
+        <title>Login Page </title>
+      </Helmet>
     <div className="min-h-screen bg-[#F0F2F5] px-4 py-8 sm:py-12 lg:flex lg:items-center">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
         <section className="order-2 w-full max-w-xl text-center lg:order-1 lg:text-left">
@@ -231,6 +236,7 @@ const {insertUserToken} =  useContext(authContext);
         </section>
       </div>
     </div>
+    </>
   );
 };
 

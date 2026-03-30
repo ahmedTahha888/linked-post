@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { LuCheckCheck } from "react-icons/lu";
 
 const Notifications = () => {
   return (
+    <>
+     <Helmet>
+        <title>Notifications  </title>
+      </Helmet>
     <div className="mx-auto max-w-7xl px-3 py-3.5">
       <main className="min-w-0">
         <section className="rounded-xl border border-slate-200 bg-white shadow-sm sm:rounded-2xl">
@@ -52,6 +57,7 @@ const Notifications = () => {
         </section>
       </main>
     </div>
+    </>
   );
 };
 
