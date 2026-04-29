@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,7 +50,7 @@ const Register = () => {
         ),
     })
     .refine((value) => value.password === value.rePassword, {
-      message: "Passwords do not match",
+      message: "Passwords do not match rePassword",
       path: ["rePassword"],
     });
 
